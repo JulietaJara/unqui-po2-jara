@@ -1,23 +1,12 @@
 package ar.edu.unq.po2.tp5;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class CajaCentral {
-	
-	private List <Producto> productosDeCliente = new ArrayList <Producto>();
-	
-	public void agregarAlCarrito(Producto producto) {
-		productosDeCliente.add(producto);
-	}
-	
-	public double registrarProductos() {
+
+	public double registrarPago(Cobrable cobrable) {
 		double montoAcumulado = 0; 
-		for(Producto producto:productosDeCliente) {
-			montoAcumulado = montoAcumulado + producto.getPrecio();
-			producto.decrementarStock();
+		montoAcumulado += cobrable.cobrar(); 
 			
-		}
 		return montoAcumulado; 
 		
 	}

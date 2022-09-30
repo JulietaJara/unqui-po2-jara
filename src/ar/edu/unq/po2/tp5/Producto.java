@@ -1,16 +1,15 @@
 package ar.edu.unq.po2.tp5;
 
-public abstract class Producto {
+public abstract class Producto implements Cobrable {
 	protected String nombre;
 	protected double precio;
 	protected boolean precioCuidado;
-	protected  int stock; 
+	protected  Inventario stock; 
 	
-	public Producto(String nombre, double precio , boolean precioCuidado, int stock) {
+	public Producto(String nombre, double precio , boolean precioCuidado) {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.precioCuidado = precioCuidado;
-		this.stock = stock; 
 	}
 
 	public String getNombre() {
@@ -36,15 +35,16 @@ public abstract class Producto {
 	}
 
 	public int getStock() {
-		return stock;
+		return stock.getStock(this);
 	}
 
-	public void setStock(int stock) {
+	public void setStock(Inventario stock) {
 		this.stock = stock;
 	}
 	
-	public void decrementarStock() {
-		this.stock = this.stock - 1; 
+	public double cobrar() {
+		stock.actualizarStockDe(this);
+		return getPrecio();
 	}
-
+	
 }

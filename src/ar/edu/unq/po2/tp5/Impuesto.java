@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tp5;
 
-public class Impuesto extends Factura {
+public class Impuesto implements Cobrable, Agencia, Factura{
 	
 	private double tasaDeServicio;
 	
@@ -16,11 +16,13 @@ public class Impuesto extends Factura {
 		this.tasaDeServicio = tasaDeServicio;
 	}
 	
-	public double montoAPagar() {
+	public double cobrar() {
 		return tasaDeServicio; 
 	}
-	
-	public void registrarPago() {
+
+	@Override
+	public void registrarPago(Factura factura) {
+		// TODO Auto-generated method stub
 		
 	}
 

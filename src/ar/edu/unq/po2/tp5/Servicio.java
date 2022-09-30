@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tp5;
 
-public class Servicio extends Factura {
+public class Servicio  implements Cobrable, Agencia, Factura {
 	
 	private double costoUnidadConsumida;
 	private double cantUnidadesConsumidas;
@@ -26,12 +26,13 @@ public class Servicio extends Factura {
 		this.cantUnidadesConsumidas = cantUnidadesConsumidas;
 	}
 	
-	public double montoAPagar() {
-		return costoUnidadConsumida*cantUnidadesConsumidas; 
-	}
-	
-    public void registrarPago() {
+    public void registrarPago(Factura factura) {
 		
+	}
+
+	@Override
+	public double cobrar() {
+		return costoUnidadConsumida*cantUnidadesConsumidas; 
 	}
 
 }
