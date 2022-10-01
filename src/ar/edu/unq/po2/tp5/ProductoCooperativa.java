@@ -4,8 +4,8 @@ public class ProductoCooperativa extends Producto {
 	
 	private double descuentoIVA;
 	
-	public ProductoCooperativa(String nombre, double precio, boolean precioCuidado, double descuento) {
-		super(nombre, precio, precioCuidado);
+	public ProductoCooperativa(String nombre, double precio, boolean precioCuidado, Inventario stock, double descuento) {
+		super(nombre, precio, precioCuidado, stock);
 		this.descuentoIVA = descuento;
 	}
 	

@@ -1,7 +1,7 @@
 package ar.edu.unq.po2.tp5;
 
-public class Servicio  implements Cobrable, Agencia, Factura {
-	
+public class Servicio  implements Cobrable, Factura {
+	private Agencia agencia; 
 	private double costoUnidadConsumida;
 	private double cantUnidadesConsumidas;
 	
@@ -26,13 +26,23 @@ public class Servicio  implements Cobrable, Agencia, Factura {
 		this.cantUnidadesConsumidas = cantUnidadesConsumidas;
 	}
 	
-    public void registrarPago(Factura factura) {
-		
+    public Agencia getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
 	}
 
 	@Override
 	public double cobrar() {
 		return costoUnidadConsumida*cantUnidadesConsumidas; 
+	}
+
+	@Override
+	public void registrarPago() {
+		// TODO Auto-generated method stub
+		agencia.registrarPago(this);
 	}
 
 }

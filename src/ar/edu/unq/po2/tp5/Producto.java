@@ -4,12 +4,14 @@ public abstract class Producto implements Cobrable {
 	protected String nombre;
 	protected double precio;
 	protected boolean precioCuidado;
-	protected  Inventario stock; 
+	protected  Inventario inventario; 
 	
-	public Producto(String nombre, double precio , boolean precioCuidado) {
+	public Producto(String nombre, double precio , boolean precioCuidado, Inventario inventario) {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.precioCuidado = precioCuidado;
+		this.inventario = inventario; 
+		
 	}
 
 	public String getNombre() {
@@ -33,17 +35,17 @@ public abstract class Producto implements Cobrable {
 	public void setPrecioCuidado(boolean precioCuidado) {
 		this.precioCuidado = precioCuidado;
 	}
-
-	public int getStock() {
-		return stock.getStock(this);
+	
+	public void agregarStock(int stock) {
+		this.inventario.agregarProducto(this, stock);
 	}
 
-	public void setStock(Inventario stock) {
-		this.stock = stock;
+	public int getStock() {
+		return inventario.getStock(this);
 	}
 	
 	public double cobrar() {
-		stock.actualizarStockDe(this);
+		inventario.actualizarStockDe(this);
 		return getPrecio();
 	}
 	
