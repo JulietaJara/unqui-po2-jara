@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Mixta implements Cultivo{
+public class Mixta extends Cultivo{
 	private List<Cultivo> cultivos = new ArrayList<Cultivo>(); 
 	
 	public Mixta(Cultivo cul1, Cultivo cul2, Cultivo cul3, Cultivo cul4) {

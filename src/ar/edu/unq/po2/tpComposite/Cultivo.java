@@ -1,8 +1,8 @@
 package ar.edu.unq.po2.tpComposite;
 
-public interface Cultivo {
-    public double getGananciaAnual(); 
+public abstract class Cultivo {
+    public abstract double getGananciaAnual(); 
 	
-	public double calcularDivGanancia(); 
+	public abstract double calcularDivGanancia();
 
 }
