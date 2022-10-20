@@ -1,10 +1,17 @@
 package ar.edu.unq.po2.tp4;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.List;
 
 public class Trabajador {
 	
 	private List <Ingreso> ingresos = new ArrayList <Ingreso>();
+=======
+
+public class Trabajador {
+	
+	ArrayList <Ingreso> ingresos = new ArrayList <Ingreso>();
+>>>>>>> 34b690944f9c4af76927824dc22f1b6fc71a089c
 	
 	public void agregarIngreso(Ingreso ingreso) {
 		this.ingresos.add(ingreso);
