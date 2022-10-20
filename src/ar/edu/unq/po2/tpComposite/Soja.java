@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tpComposite;
 
-public class Soja extends Cultivo {
+public class Soja implements Cultivo {
 	
 	@Override
 	public double getGananciaAnual() {

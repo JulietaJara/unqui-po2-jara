@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tpComposite;
 
-public class Trigo extends Cultivo {
+public class Trigo implements Cultivo {
 
 	@Override
 	public double getGananciaAnual() {

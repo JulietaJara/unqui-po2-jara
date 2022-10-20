@@ -1,15 +1,8 @@
 package ar.edu.unq.po2.tpComposite;
 
-public abstract class Cultivo {
-	private double gananciaAnual;
+public interface Cultivo {
+    public double getGananciaAnual(); 
 	
-	public void setGananciaAnual(double gananciaAnual) {
-		this.gananciaAnual = gananciaAnual;
-	}
-
-	public abstract double getGananciaAnual(); 
-	
-	public abstract double calcularDivGanancia(); 
-		
+	public double calcularDivGanancia(); 
 
 }
