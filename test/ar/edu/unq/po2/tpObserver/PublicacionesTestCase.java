@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class PublicacionesTestCase {
@@ -13,23 +14,24 @@ class PublicacionesTestCase {
 	Artículo artículo; 
 	Suscriptor unSuscriptor; 
 	
-	@Test
-	void test() {
+	@BeforeEach
+	public void setUp() throws Exception{
 		sistema = new SistemaDeReferencia();
-		List<String> pc = Arrays.asList("Java", "Programación"); 
+		
 		artículo = mock(Artículo.class); 
 		unSuscriptor = mock(Suscriptor.class);
-		when(unSuscriptor.getPrefrencias()).thenReturn(pc);
-		when(artículo.getPalabrasClaves()).thenReturn(pc); 
+		
 		sistema.registrarSuscriptor(unSuscriptor);
+	}
+	@Test
+	void testUnSistemaEnviaNotificaciónASuscriptores() {
+		List<String> pc = Arrays.asList("Java", "Programación"); 
 		
-		artículo.setPalabrasClaves(pc);
-		
-		
+		when(unSuscriptor.getPrefrencias()).thenReturn(pc);
+		when(artículo.getPalabrasClaves()).thenReturn(pc);
 		
 		sistema.agregarArtículo(artículo);
 		
-		//assertTrue(unSuscriptor.getPrefrencias().contains("Programación"));
 		verify(unSuscriptor, times(1)).recibirNotificación();
 		
 	}
