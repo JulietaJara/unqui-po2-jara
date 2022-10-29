@@ -1,6 +1,5 @@
 package ar.edu.unq.po2.tpObserver;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
