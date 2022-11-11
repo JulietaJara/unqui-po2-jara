@@ -6,6 +6,10 @@ import java.util.List;
 public class ServidorDeJuego {
 	private List<Jugador> jugadores = new ArrayList<Jugador>();
 	private List<Pregunta> preguntas = new ArrayList<Pregunta>();
+	
+	public ServidorDeJuego(List <Pregunta> pregs) {
+		preguntas = pregs; 
+	}
 
 	public List<Jugador> getJugadores() {
 		return jugadores;
@@ -30,22 +34,18 @@ public class ServidorDeJuego {
 	
 	public void recibirRespuesta(Jugador j, String pregunta, String respuesta) {
 		List<Pregunta> pregs = preguntas.stream().filter(p -> p.getPregunta() == pregunta).toList(); 
-		if(pregs.get(0).getRespuesta() == respuesta) {
-			contabilizarRespuestaCorrecta(j, pregunta);
-			j.respuestaCorrecta();
+		if(!pregs.isEmpty() && pregs.get(0).isRespuestaCorrecta(respuesta)) { 
+			j.respuestaCorrecta(pregunta);
+			verificarFinalizaciónDePartida(j);
 			notificarRespuestaCorrectaAJugadores(pregunta, j); 
 		} else {
-			j.respuestaIncorrecta();
+			j.respuestaIncorrecta(pregunta);
 		}
 	}
 
-	private void contabilizarRespuestaCorrecta(Jugador j, String preg) {
-		j.sumarRespuestaCorrecta();
-		verificarFinalizaciónDePartida(j);
-	}
-
+	
 	private void verificarFinalizaciónDePartida(Jugador j) {
-		if (j.getRestCorrectas() == 5) {
+		if (j.getContabilizador().getRestCorrectas() == 5) {
 			finalizarPartida();
 		}
 		
